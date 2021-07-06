@@ -11,7 +11,7 @@ test('creates a Employee object', () => {
     expect(employ.email).toBe('leehub@gmail.com');
 });
 
-//Method --> GetName Test
+//Methods --> Test
 test('gets Employee Methods: Name, ID, EMail, Role', () =>{
     const employ = new Employee('Lee', '1223', 'leehub@gmail.com');
 
