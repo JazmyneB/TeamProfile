@@ -101,6 +101,11 @@ const EmployeeInfo = () => {
             ]).then(data => {
                 const newEngin = new Engineer(answer.name, answer.Id, answer.email, data.gitHub);
                 team.push(newEngin);
+                if (answer.confirmEmployee){
+                    return EmployeeInfo(team);
+                } else {
+                    return team;
+                }
             })
         }
         else if (answer.role === 'Intern'){
@@ -113,6 +118,11 @@ const EmployeeInfo = () => {
             ]).then(data => {
                 const newIntern = new Intern(answer.name, answer.Id, answer.email, data.School);
                 team.push(newIntern);
+                if (answer.confirmEmployee){
+                    return EmployeeInfo(team);
+                } else {
+                    return team;
+                }
             })
         }
         // console.log(team)
