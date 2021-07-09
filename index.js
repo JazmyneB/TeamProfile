@@ -6,7 +6,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const { writeFile, copyFile } = require('./src/generate-site');
+const { writeFile, copyFile }  = require('./src/generate-site');
 const generatePage = require('./src/page-template');
 
 const team = [];
@@ -149,8 +149,8 @@ const addEmployee = () => {
         if (info.confirmEmployee){
             return EmployeeInfo(team);
         } else {
-            console.log(team);
-            generatePage(team);
+            //console.log(team);
+            return writeFile(generatePage(team));
         }
     })
 }
