@@ -58,13 +58,13 @@ const EmployeeInfo = () => {
             name: 'role',
             message: 'What is the role of the Employee?',
             choices: ['Manager', 'Engineer', 'Intern']
-        },
-        {
-            type: 'confirm',
-            name: 'confirmEmployee',
-            message: 'Would you like to add another Employee?',
-            default: false
         }
+        // {
+        //     type: 'confirm',
+        //     name: 'confirmEmployee',
+        //     message: 'Would you like to add another Employee?',
+        //     default: false
+        // }
 
     ]).then(answer => {
         //console.log(answer);
@@ -73,8 +73,7 @@ const EmployeeInfo = () => {
                 {
                 type: 'input',
                 name: 'officeNumber',
-                message: 'What is the Office Number?'
-
+                message: 'What is the Office Number'
                 }
             ]).then(data =>{
                 //console.log(data);
@@ -82,11 +81,12 @@ const EmployeeInfo = () => {
                 const newMange = new Manager(answer.name, answer.Id, answer.email, data.officeNumber);
                 //console.log(newMange);
                 team.push(newMange);
-                if (answer.confirmEmployee){
-                    return EmployeeInfo(team);
-                } else {
-                    return team;
-                }
+                addEmployee();
+                // if (answer.confirmEmployee){
+                //     return EmployeeInfo(team);
+                // } else {
+                //     return team;
+                // }
             })
             
         }
@@ -136,13 +136,34 @@ const EmployeeInfo = () => {
     })
 }
 
+const addEmployee = () => {
+    Inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'confirmEmployee',
+            message: 'Would you like to add another Employee?',
+            default: false
+        }
+    ]).then(info =>{
+        console.log(info);
+        if (info.confirmEmployee){
+            return EmployeeInfo(team);
+        } else {
+            console.log(team);
+            generatePage(team);
+        }
+    })
+}
 
 
-EmployeeInfo();
+
+EmployeeInfo()
+
 
 // .then(info =>{
-//     return generatePage(info);
-// })
+//    console.log(info);
+    //return generatePage(info);
+//});
 // .then(pageHTML =>{
 //     return writeFile(pageHTML);
 // })
