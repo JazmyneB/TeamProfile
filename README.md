@@ -8,7 +8,7 @@
   ## Table of Contents
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Credits](#credits)
+  * [Screenshots](#Screenshots)
   * [License](#license)
   
   ## Installation
@@ -17,8 +17,9 @@
   ## Usage
   For the best use and results, answer the questions that are prompted as well as adding the employees that are included in your team.
 
-  ## Credits
-  undefined
+  ## Screenshots
+  ![alt text](./Team.JPG "Team Chart")
+  Once you entered the list of your employess, there will be a generated chart that looks like the following above. You will be able to click on the link of the email to have your mail popup to send an email to the desired employee. You can also click on the links to the github users account.
 
   
 
