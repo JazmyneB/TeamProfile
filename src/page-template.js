@@ -69,10 +69,10 @@ const generateIntern = intern => {
 
 function generateHTML(teamInfo) {
     //console.log(Object.keys(teamInfo));
-    console.log(teamInfo.length);
-    console.log(teamInfo[0].getRole())
+    //console.log(teamInfo.length);
+    //console.log(teamInfo[0].getRole())
     for (let i=0; i < teamInfo.length; i++){
-        console.log(teamInfo[i])
+        //console.log(teamInfo[i])
         if (teamInfo[i].getRole() === "Manager"){
              manny += generateManager(teamInfo[i]);
         } else if (teamInfo[i].getRole() === "Engineer"){

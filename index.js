@@ -143,7 +143,7 @@ const addEmployee = () => {
             default: false
         }
     ]).then(info =>{
-        console.log(info);
+        //console.log(info);
         //console.log(addData);
         if (info.confirmEmployee){
             EmployeeInfo(team);
