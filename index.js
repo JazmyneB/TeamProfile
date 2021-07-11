@@ -7,7 +7,9 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 const { writeFile, copyFile }  = require('./src/generate-site');
-const generatePage = require('./src/page-template');
+const template = require('./src/page-template');
+
+//console.log(template);
 
 const team = [];
 
@@ -79,8 +81,10 @@ const EmployeeInfo = () => {
                 //console.log(data);
                 //console.log(answer);
                 const newMange = new Manager(answer.name, answer.Id, answer.email, data.officeNumber);
-                //console.log(newMange);
+                //console.log(newMange.getRole());
                 team.push(newMange);
+                //team["role"] = newMange.getRole();
+                //console.log(team);
                 addEmployee();
                 // if (answer.confirmEmployee){
                 //     return EmployeeInfo(team);
@@ -101,11 +105,7 @@ const EmployeeInfo = () => {
             ]).then(data => {
                 const newEngin = new Engineer(answer.name, answer.Id, answer.email, data.gitHub);
                 team.push(newEngin);
-                if (answer.confirmEmployee){
-                    return EmployeeInfo(team);
-                } else {
-                    return team;
-                }
+                addEmployee();
             })
         }
         else if (answer.role === 'Intern'){
@@ -118,11 +118,7 @@ const EmployeeInfo = () => {
             ]).then(data => {
                 const newIntern = new Intern(answer.name, answer.Id, answer.email, data.School);
                 team.push(newIntern);
-                if (answer.confirmEmployee){
-                    return EmployeeInfo(team);
-                } else {
-                    return team;
-                }
+                addEmployee();
             })
         }
         // console.log(team)
@@ -132,11 +128,13 @@ const EmployeeInfo = () => {
         //     }
 
         // },4000)
+        
 
     })
 }
 
 const addEmployee = () => {
+    console.log(team);
     Inquirer.prompt([
         {
             type: 'confirm',
@@ -146,18 +144,22 @@ const addEmployee = () => {
         }
     ]).then(info =>{
         console.log(info);
+        //console.log(addData);
         if (info.confirmEmployee){
-            return EmployeeInfo(team);
+            EmployeeInfo(team);
         } else {
             //console.log(team);
-            return writeFile(generatePage(team));
+            let wF = template(team);
+            writeFile(wF);
+            console.log(writeFile(wF));
+            copyFile();
         }
     })
 }
 
 
 
-EmployeeInfo()
+EmployeeInfo();
 
 
 // .then(info =>{
